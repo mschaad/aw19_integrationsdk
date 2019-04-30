@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- DO NOT EDIT THE FOLLOWING LINE-->
+    <script src='APPIAN_JS_SDK_URI'></script> 
+  </head>
+  <body>
+    <iframe id="widget-embed-iframe" frameborder="0" height="350px" width="100%" src=""></iframe>
+
+  </body>
+  <script type="text/javascript"> 
+    var locale = Appian.getLocale(); //Returns the user's locale (eg. en-US). This accounts for system settings, user settings, etc.
+    var accentColor = Appian.getAccentColor().replace('#', '');; //Returns the accent color of the Appian environment in hexadecimal format
+    var lat;
+    var lng;
+    var title;
+    var height;
+    var displaySummary;
+    var displayHeader;
+    var connectedSystem;
+    var auth;
+    const widget = document.getElementById('widget-embed-iframe');
+
+    Appian.Component.onNewValue(function(allParameters) { // Whenever a new value is provided to ANY input, this function is invoked with ALL inputs as a dictionary. This includes when the component is initialized.
+      lat = allParameters['lat'] ? allParameters['lat'] : 38.958378;
+      lng = allParameters['lng'] ? allParameters['lng'] : -77.361421;
+      title = allParameters['title'] ? allParameters['title']: '';
+      displaySummary = allParameters['displaySummary'];
+      displayHeader = allParameters['displayHeader'];
+      height = allParameters['height'] == 'auto' ? '350px' : allParameters['height'];
+      widget.style.height = height;
+      connectedSystem = allParameters['darkySkyConnectedSystem'];
+      if (connectedSystem != null) {
+        Appian.Component.invokeClientApi(connectedSystem, 'GetAuth', {}).then(function(response) {
+          Appian.Component.setValidations([]);
+          if (response.payload.error != null){
+            Appian.Component.setValidations(response.payload.error);
+          }else{
+            auth = response.payload.authKey;
+            updateWidget();
+          }
+        })
+        .catch(function(error){
+          Appian.Component.setValidations(error);
+        });
+      }
+    }); 
+
+     function updateWidget(){
+      widget.src = 'https://darksky.net/widget/default/' +
+      lat + ',' +
+      lng + '/us12/en?' +
+      'auth=' + auth +
+      '&domain=' + 
+      '&height=' + height +
+      '&title=' + title + 
+      '&textColor=333333&bgColor=FFFFFF&transparency=true&skyColor=' + accentColor + '&fontFamily=Default&customFont=' +
+      '&units=' + 'us' + 
+      '&htColor=333333&ltColor=C7C7C7' +
+      '&displaySum=' + (displaySummary ? 'yes' : 'no') +
+      '&displayHeader=' + (displayHeader ? 'yes' : 'no');
+      console.log(widget.src);
+    }
+  </script> 
+</html>

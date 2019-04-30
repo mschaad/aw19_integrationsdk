@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <bytecodeTargetLevel>
+      <module name="google-translation.main" target="1.8" />
+      <module name="google-translation.test" target="1.8" />
+      <module name="weather-forecast.main" target="1.8" />
+      <module name="weather-forecast.test" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

@@ -1,0 +1,18 @@
+<appian-plugin name="DarkSky Weather Forecast" key="com.appianworld.weather.csp">
+
+    <plugin-info>
+        <description>DarkSky Weather Forecast</description>
+        <vendor name="Appian World Hands On Labs" url="https://www.appian.com"/>
+        <version>1.0.0</version>
+        <application-version min="19.1.0.0"/>
+    </plugin-info>
+
+    <connected-system-template key="WeatherForecastConnectedSystemTemplate"
+                               name="WeatherForecastConnectedSystemTemplate"
+                               class="com.appianworld.weather.templates.WeatherForecastConnectedSystemTemplate">
+        <integration-template key="GetWeatherIntegrationTemplate" name="GetWeatherIntegrationTemplate"
+                              class="com.appianworld.weather.templates.GetWeatherIntegrationTemplate"/>
+        <client-api key="GetAuth" name="GetAuth"
+                    class="com.appianworld.weather.templates.GetAuthClientApi"/>
+    </connected-system-template>
+</appian-plugin>

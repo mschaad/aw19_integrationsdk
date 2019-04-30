@@ -1,0 +1,76 @@
+<?xml version="1.0"?>
+<appian-component-plugin name="DarkSky Weather Map" key="com.appianworld.weather.cp">
+  <plugin-info>
+    <description>Displays Weather Forecast Maps and widgets</description>
+    <vendor name="Appian World Hands On Lab" url="www.appian.com"/>
+    <version>1.0.0</version>
+    <support supported="false"/>
+  </plugin-info>
+  <component rule-name="weatherMap" version="1.0.0">
+    <sdk-version>2.0.0</sdk-version>
+    <supported-user-agents>chrome firefox ie11 edge safari mobile</supported-user-agents>
+    <icon-file>weather.svg</icon-file>
+    <parameter>
+      <name>mapType</name>
+      <category>input-only</category>
+      <type>Text</type>
+    </parameter>
+    <parameter>
+      <name>lat</name>
+      <category>input-only</category>
+      <type>Decimal</type>
+    </parameter>
+    <parameter>
+      <name>lng</name>
+      <category>input-only</category>
+      <type>Decimal</type>
+    </parameter>
+    <parameter>
+      <name>zoom</name>
+      <category>input-only</category>
+      <type>Integer</type>
+    </parameter>
+    <parameter>
+      <name>units</name>
+      <category>input-only</category>
+      <type>Text</type>
+    </parameter>
+    <html-entry-point>index.html</html-entry-point>
+  </component>
+  <component rule-name="weatherWidget" version="1.0.0">
+    <sdk-version>2.0.0</sdk-version>
+    <supported-user-agents>chrome firefox ie11 edge safari mobile</supported-user-agents>
+    <icon-file>widget.svg</icon-file>
+    <parameter>
+      <name>lat</name>
+      <category>input-only</category>
+      <type>Decimal</type>
+    </parameter>
+    <parameter>
+      <name>lng</name>
+      <category>input-only</category>
+      <type>Decimal</type>
+    </parameter>
+    <parameter>
+      <name>title</name>
+      <category>input-only</category>
+      <type>Text</type>
+    </parameter>
+    <parameter>
+      <name>displaySummary</name>
+      <category>input-only</category>
+      <type>Boolean</type>
+    </parameter>
+    <parameter>
+      <name>displayHeader</name>
+      <category>input-only</category>
+      <type>Boolean</type>
+    </parameter>
+    <parameter>
+      <name>darkySkyConnectedSystem</name>
+      <category>input-only</category>
+      <type>ConnectedSystem</type>
+    </parameter>
+    <html-entry-point>index.html</html-entry-point>
+  </component>
+</appian-component-plugin>
