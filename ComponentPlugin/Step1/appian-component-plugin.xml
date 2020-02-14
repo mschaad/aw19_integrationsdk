@@ -13,20 +13,22 @@
     <parameter>
       <name>mapType</name>
       <category>input-only</category>
-      <enum multiple="false">
-        <choice>temperature</choice>
-        <choice>feelslike</choice>
-  		  <choice>cloud</choice>
-  		  <choice>radar</choice>
-  		  <choice>precipitation</choice>
-  		  <choice>wind</choice>
-  		  <choice>gust</choice>
-  		  <choice>dew</choice>
-  		  <choice>uv</choice>
-  		  <choice>pressure</choice>
-  		  <choice>ozone</choice>
-  		  <choice>emoji</choice>
+      <type>
+        <enum multiple="false">
+          <choice>temperature</choice>
+          <choice>feelslike</choice>
+    		  <choice>cloud</choice>
+    		  <choice>radar</choice>
+    		  <choice>precipitation</choice>
+    		  <choice>wind</choice>
+    		  <choice>gust</choice>
+    		  <choice>dew</choice>
+    		  <choice>uv</choice>
+    		  <choice>pressure</choice>
+    		  <choice>ozone</choice>
+    		  <choice>emoji</choice>
         </enum>
+      </type>
     </parameter>
     <parameter>
       <name>lat</name>
@@ -46,7 +48,20 @@
     <parameter>
       <name>units</name>
       <category>input-only</category>
-      <type>Text</type>
+      <type>
+        <enum multiple="false">
+          <choice>c</choice>
+          <choice>f</choice>
+    		  <choice>hPa</choice>
+    		  <choice>inHg</choice>
+    		  <choice>knots</choice>
+    		  <choice>mph</choice>
+    		  <choice>m_s</choice>
+    		  <choice>km_h</choice>
+    		  <choice>mm_h</choice>
+    		  <choice>in_h</choice>
+        </enum>
+      </type>
     </parameter>
     <html-entry-point>index.html</html-entry-point>
   </component>

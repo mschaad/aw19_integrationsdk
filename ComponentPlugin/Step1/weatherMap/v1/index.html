@@ -5,7 +5,7 @@
     <script src='APPIAN_JS_SDK_URI'></script>
   </head>
   <body>
-    <iframe id="map-embed-iframe" frameborder="0" height="500px" width="100%" src=""></iframe>
+  <iframe id="map-embed-iframe" frameborder="0" height="500px" width="100%" src=""></iframe>
   </body>
   <script type="text/javascript">
     const mapTypes = {
@@ -23,14 +23,18 @@
      'emoji':'emoji'
     };
     const unitTypes = {
-      'mm/h' : '_mmph',
-      'in/h': '_inph',
+      //precip
+      'mm_h' : '_mmph',
+      'in_h': '_inph',
+      //speed
       'mph': '_mph',
-      'km/h': '_kmph',
-      'm/s':'_m/s',
+      'km_h': '_kmph',
+      'm_s':'_mps',
       'knots':'_kn',
+      //temp
       'c':'_c',
       'f':'_f',
+      //pressure
       'hPa':'_hpa',
       'inHg':'_inhg'
     };
@@ -44,14 +48,13 @@
     const auth = '1555350844_66b5b917cd2c288ac4d35250d8e32fa6';
     const map = document.getElementById('map-embed-iframe');
 
-
-    Appian.Component.onNewValue(function(allParameters) { // Whenever a new value is provided to ANY input, this function is invoked with ALL inputs as a dictionary. This includes when the component is initialized.
-      mapType = mapTypes[allParameters['mapType']] ? mapTypes[allParameters['mapType']] : 'temperature';
-      lat = allParameters['lat'] ? allParameters['lat'] : 39.722;
-      lng = allParameters['lng'] ? allParameters['lng'] : -95.128;
-      zoom = allParameters['zoom'] ? allParameters['zoom'] : 4;
-      units = unitTypes[allParameters['units']] ? unitTypes[allParameters['units']] : '_f';
-      map.style.height = allParameters['height'] == 'auto' ? '500px' : allParameters['height'];
+    Appian.Component.onNewValue(function(parameters) { // Whenever a new value is provided to ANY input, this function is invoked with ALL inputs as a dictionary. This includes when the component is initialized.
+      mapType = mapTypes[parameters.mapType || 'temperature'];
+      lat = parameters.lat || 39.722;
+      lng = parameters.lng || -95.128;
+      zoom = parameters.zoom || 4;
+      units = unitTypes[parameters.units || 'f'];
+      map.style.height = parameters.height == 'auto' ? '500px' : parameters.height;
       updateMap();
     });
 
