@@ -13,7 +13,20 @@
     <parameter>
       <name>mapType</name>
       <category>input-only</category>
-      <type>Text</type>
+      <enum multiple="false">
+        <choice>temperature</choice>
+        <choice>feelslike</choice>
+  		  <choice>cloud</choice>
+  		  <choice>radar</choice>
+  		  <choice>precipitation</choice>
+  		  <choice>wind</choice>
+  		  <choice>gust</choice>
+  		  <choice>dew</choice>
+  		  <choice>uv</choice>
+  		  <choice>pressure</choice>
+  		  <choice>ozone</choice>
+  		  <choice>emoji</choice>
+        </enum>
     </parameter>
     <parameter>
       <name>lat</name>

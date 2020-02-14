@@ -2,25 +2,25 @@
 <html>
   <head>
     <!-- DO NOT EDIT THE FOLLOWING LINE-->
-    <script src='APPIAN_JS_SDK_URI'></script> 
+    <script src='APPIAN_JS_SDK_URI'></script>
   </head>
   <body>
     <iframe id="map-embed-iframe" frameborder="0" height="500px" width="100%" src=""></iframe>
   </body>
-  <script type="text/javascript"> 
+  <script type="text/javascript">
     const mapTypes = {
-      'temperature':'temperature',
-      'feels-like':'apparent_temperature',
-      'cloud':'cloud_cover',
-      'radar':'radar',
-      'precipitation':'precipitation_rate',
-      'wind':'wind_speed',
-      'gust':'wind_gust',
-      'dew':'dew_point',
-      'uv':'uv_index',
-      'pressure':'sea_level_pressure',
-      'ozone':'ozone',
-      'emoji':'emoji'
+     'temperature':'temperature',
+     'feelslike':'apparent_temperature',
+     'cloud':'cloud_cover',
+     'radar':'radar',
+     'precipitation':'precipitation_rate',
+     'wind':'wind_speed',
+     'gust':'wind_gust',
+     'dew':'dew_point',
+     'uv':'uv_index',
+     'pressure':'sea_level_pressure',
+     'ozone':'ozone',
+     'emoji':'emoji'
     };
     const unitTypes = {
       'mm/h' : '_mmph',
@@ -41,7 +41,7 @@
     var lng;
     var zoom;
     var units;
-    const auth = '1555350844_66b5b917cd2c288ac4d35250d8e32fa6'; 
+    const auth = '1555350844_66b5b917cd2c288ac4d35250d8e32fa6';
     const map = document.getElementById('map-embed-iframe');
 
 
@@ -53,16 +53,16 @@
       units = unitTypes[allParameters['units']] ? unitTypes[allParameters['units']] : '_f';
       map.style.height = allParameters['height'] == 'auto' ? '500px' : allParameters['height'];
       updateMap();
-    }); 
+    });
 
     function updateMap(){
-      map.src = 'https:///maps.darksky.net/@' + mapType + 
-      ',' + lat + 
-      ',' + lng + 
-      ',' + zoom + 
-      '?auth=' + auth + 
+      map.src = 'https:///maps.darksky.net/@' + mapType +
+      ',' + lat +
+      ',' + lng +
+      ',' + zoom +
+      '?auth=' + auth +
       '&defaultField=' + mapType +
       '&embed=true&timeControl=false&fieldControl=false&defaultUnits=' + units;
     }
-  </script> 
+  </script>
 </html>
