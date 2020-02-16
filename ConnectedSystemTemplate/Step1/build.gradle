@@ -30,3 +30,10 @@ jar {
     classifier = 'sources'
     from sourceSets.main.allJava
 }
+
+task install(type: Copy) {
+    dependsOn jar
+    group = 'install'
+    from 'build/libs/'
+    into 'e:/appian/_admin/plugins'
+}
