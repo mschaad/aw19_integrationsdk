@@ -146,7 +146,7 @@ public class GetWeatherIntegrationTemplate extends SimpleIntegrationTemplate {
         Map<String, Object> diagnostic = new HashMap<>();
         diagnostic.put("Latitude", latitude);
         diagnostic.put("Longitude", longitude);
-        diagnostic.put("Disabled Features", blocks);
+        diagnostic.put("Disabled Features", blocks.stream().map(Enum::toString).toArray());
         return diagnostic;
     }
 
