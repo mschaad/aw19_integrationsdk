@@ -134,7 +134,9 @@ public class GetWeatherIntegrationTemplate extends SimpleIntegrationTemplate {
         DarkSkyClient client = new DarkSkyClient();
         util.startTiming();
         try {
-            util.addAllResponse(gson.fromJson(client.forecastJsonString(request), new HashMap<String, Object>().getClass()));
+            String responseJson = client.forecastJsonString(request);
+            HashMap<String,Object> responseAsMap = gson.fromJson(responseJson, HashMap.class);
+            util.addAllResponse(responseAsMap);
         } catch (ForecastException e) {
             return util.buildApiExceptionError(e);
         }
